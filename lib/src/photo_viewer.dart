@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
@@ -55,7 +56,9 @@ class _FBPhotoViewerState extends State<FBPhotoViewer> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: PhotoView(
-                    imageProvider: isNetworkAsset ? CachedNetworkImageProvider(assetSource) : AssetImage(assetSource),
+                    imageProvider: isNetworkAsset
+                        ? CachedNetworkImageProvider(assetSource)
+                        : FileImage(File(assetSource)),
                     minScale: PhotoViewComputedScale.contained,
                     initialScale: PhotoViewComputedScale.contained,
                     heroAttributes: PhotoViewHeroAttributes(tag: assetSource),
@@ -71,7 +74,8 @@ class _FBPhotoViewerState extends State<FBPhotoViewer> {
                 // child: CircularProgressIndicator(
                 //   value: event == null ? 0 : event.cumulativeBytesLoaded / (event.expectedTotalBytes ?? 1),
                 // ),
-                child: CupertinoActivityIndicator(color: Colors.white, radius: 10),
+                child:
+                    CupertinoActivityIndicator(color: Colors.white, radius: 10),
               ),
             ),
             backgroundDecoration: const BoxDecoration(
@@ -90,7 +94,8 @@ class _FBPhotoViewerState extends State<FBPhotoViewer> {
               icon: const Icon(Icons.close, color: Colors.white),
             ),
           ),
-          ...widget.customSubChild ?? [], // add custom sub-child for photo viewer
+          ...widget.customSubChild ??
+              [], // add custom sub-child for photo viewer
         ],
       ),
     );

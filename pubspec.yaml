@@ -4,7 +4,7 @@ version: 1.0.3
 homepage: https://github.com/kent2508/flutter_fb_photo_view
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   dismissible_page: ^1.0.2
   carousel_slider: ^4.2.1
   cached_network_image: ^3.3.1
-  gap: ^3.0.1  
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
